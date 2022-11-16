@@ -5,9 +5,9 @@
 
 @section('content')
 <header class="py-2" style="
-background: #FBD3E9;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #BB377D, #FBD3E9);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #BB377D, #FBD3E9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: #bdc3c7;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 ">
     <div class="container px-4 px-lg-5 my-5">
@@ -35,9 +35,7 @@ background: linear-gradient(to right, #BB377D, #FBD3E9); /* W3C, IE 10+/ Edge, F
                                     <p class="mb-0 text-xs text-dark font-weight-bold">QTY: {{$order->qty ?? ''}}</p>
                                     <p class="mb-0 text-xs text-dark font-weight-bold">PRICE: {{$order->price ?? ''}}</p>
                                     <p class="mb-0 text-xs text-dark font-weight-bold">{{ $order->created_at->format('M j, h:i A') }}</p>
-                                    @if($order->isPromo == '1')
-                                        <span class="badge bg-warning">BUY 1 TAKE 1</span>
-                                    @endif 
+                                 
                                 </div>
                                 <div class="ms-auto">
                                     <button class="btn btn-success mb-2 btn-sm edit_order" order_id="{{$order->id}}">

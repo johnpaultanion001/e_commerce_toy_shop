@@ -6,9 +6,9 @@
 
 @section('content')
 <header class="py-5" style="
-background: #FBD3E9;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #BB377D, #FBD3E9);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #BB377D, #FBD3E9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: #bdc3c7;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 ">
     <div class="container px-4 px-lg-5 my-5">
@@ -28,7 +28,6 @@ background: linear-gradient(to right, #BB377D, #FBD3E9); /* W3C, IE 10+/ Edge, F
                 <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                   @csrf
                       <div class="text-center">
-                        <img src="assets/img/logo.jfif" alt="logo" width="120" height="120">
                         <br>
                         <br>
                       </div>
@@ -103,7 +102,7 @@ background: linear-gradient(to right, #BB377D, #FBD3E9); /* W3C, IE 10+/ Edge, F
                       
                       <p class="mt-4 text-sm text-center">
                         Already a member?
-                        <a href="/login" class="text-danger font-weight-bold">LOGIN</a>
+                        <a href="/login" class="text-dark font-weight-bold">LOGIN</a>
                       </p>
                 </form>
               </div>
