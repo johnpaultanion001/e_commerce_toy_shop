@@ -17,12 +17,6 @@ class OrderController extends Controller
 {
     public function view(Product $product){
 
-        if($product->expiration < Carbon::now()->addMonths(3)){
-            $promo = "1";
-        }else{
-            $promo = "0";
-        }
-
         $product_d = [
             'name'         => $product->name,
             'category'     => $product->category->name,
@@ -32,25 +26,10 @@ class OrderController extends Controller
             'description'  => $product->description ?? '',
             'expiration'  => 'Expiration: ₱ '.$product->expiration->format('M j , Y'),
             'exp'        => $promo ?? '',
-            'isStar'     => $product->reviewsIsStar(),
         ];
-
-        $reviews = Review::where('product_id', $product->id)
-                            ->latest()
-                            ->get();
-
-        foreach($reviews as $review){
-            $reviews1[] = array(
-                'name'              => $review->user->name, 
-                'review'            => $review->review,
-                'isStar'            => $review->isStar,
-                'date_time'         => $review->created_at->diffForHumans(),
-            );
-        }
 
         return response()->json([
             'product'      =>  $product_d,
-            'reviews'  => $reviews1 ?? '',
         ]);
 
     }
@@ -65,13 +44,6 @@ class OrderController extends Controller
         if ($validated->fails()) {
             return response()->json(['errors' => $validated->errors()]);
         }
-
-        if($product->expiration < Carbon::now()->addMonths(3)){
-            $promo = true;
-        }else{
-            $promo = false;
-        }
-
 
         if($request->input('qty') > $product->stock){
             return response()->json(['errorstock' => 'Must be less than the stock.']);
@@ -92,7 +64,6 @@ class OrderController extends Controller
                 'qty'        => $request->input('qty'),
                 'amount'     => $amount,
                 'price'      => $product->price,
-                'isPromo'    => $promo,
             ]
         );
 
@@ -109,7 +80,6 @@ class OrderController extends Controller
         return view('customer.orders',compact('orders'));
     }
     public function edit(OrderProduct $order){
-    
 
         $orders = [
             'name'         => $order->product->name,
@@ -180,25 +150,6 @@ class OrderController extends Controller
             'shipping_option' => $request->get('shipping')
         ]);
         foreach($orderproducts as $order){
-            //but 1 take 1
-            if($order->product->expiration < Carbon::now()->addMonths(3)){
-                $order_qty = $order->qty * 2;
-                if($order_qty > $order->product->stock){
-                    Order::find($orders->id)->delete();
-                    return response()->json(['no_stock' => 'Out of stock <br>
-                                                            Product: '.$order->product->name.
-                                                            '<br> Qty: '.$order_qty. 
-                                                            '<br> Available Stock: '.$order->product->stock]);
-                }else{
-                    Product::where('id', $order->product_id)->decrement('stock', $order_qty);
-                    OrderProduct::where('id', $order->id)
-                                    ->update([
-                                        'order_id' => $orders->id,
-                                        'isCheckout' => true,
-                                        'isPromo' => true,
-                                    ]);
-                }
-            }else{
                 if($order->qty > $order->product->stock){
                     Order::find($orders->id)->delete();
                     return response()->json(['no_stock' => 'Out of stock <br>
@@ -213,8 +164,6 @@ class OrderController extends Controller
                                         'isCheckout' => true,
                                     ]);
                 }
-            }
-            
 
         }
         return response()->json(['success' => 'Ordered Successfully Checkout.']);
@@ -236,14 +185,9 @@ class OrderController extends Controller
             ]);
 
         foreach($order->orderproducts()->get() as $order_p){
-            if($order_p->product->expiration < Carbon::now()->addMonths(3)){
-                $order_qty = $order_p->qty * 2;
-                Product::where('id', $order_p->product->id)
-                    ->increment('stock', $order_qty );
-            }else{
-                Product::where('id', $order_p->product->id)
+            Product::where('id', $order_p->product->id)
                     ->increment('stock', $order_p->qty);
-            }
+            
         }
 
         $order->orderproducts()->update([

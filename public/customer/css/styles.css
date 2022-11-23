@@ -284,7 +284,6 @@ kbd {
   font-size: 0.875em;
   color: #fff;
   background-color: #212529;
-  border-radius: 0.2rem;
 }
 kbd kbd {
   padding: 0;
@@ -333,9 +332,7 @@ label {
   display: inline-block;
 }
 
-button {
-  border-radius: 0;
-}
+
 
 button:focus:not(:focus-visible) {
   outline: 0;
@@ -607,7 +604,6 @@ progress {
   padding: 0.25rem;
   background-color: #fff;
   border: 1px solid #dee2e6;
-  border-radius: 0.25rem;
   max-width: 100%;
   height: auto;
 }
@@ -2196,7 +2192,6 @@ progress {
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #ced4da;
-  border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -2248,7 +2243,7 @@ progress {
   border-style: solid;
   border-width: 0;
   border-inline-end-width: 1px;
-  border-radius: 0;
+  
   -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -2264,7 +2259,7 @@ progress {
   border-style: solid;
   border-width: 0;
   border-inline-end-width: 1px;
-  border-radius: 0;
+  
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -2294,7 +2289,7 @@ progress {
   border-style: solid;
   border-width: 0;
   border-inline-end-width: 1px;
-  border-radius: 0;
+  
   -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -2353,7 +2348,7 @@ progress {
   min-height: calc(1.5em + 1rem + 2px);
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
-  border-radius: 0.3rem;
+  
 }
 .form-control-lg::-webkit-file-upload-button {
   padding: 0.5rem 1rem;
@@ -2394,11 +2389,11 @@ textarea.form-control-lg {
 }
 .form-control-color::-moz-color-swatch {
   height: 1.5em;
-  border-radius: 0.25rem;
+  
 }
 .form-control-color::-webkit-color-swatch {
   height: 1.5em;
-  border-radius: 0.25rem;
+  
 }
 
 .form-select {
@@ -2416,7 +2411,7 @@ textarea.form-control-lg {
   background-position: right 0.75rem center;
   background-size: 16px 12px;
   border: 1px solid #ced4da;
-  border-radius: 0.25rem;
+  
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -2457,7 +2452,7 @@ textarea.form-control-lg {
   padding-bottom: 0.5rem;
   padding-left: 1rem;
   font-size: 1.25rem;
-  border-radius: 0.3rem;
+  
 }
 
 .form-check {
@@ -2491,7 +2486,7 @@ textarea.form-control-lg {
   border-radius: 0.25em;
 }
 .form-check-input[type=radio] {
-  border-radius: 50%;
+  
 }
 .form-check-input:active {
   filter: brightness(90%);
@@ -2768,7 +2763,7 @@ textarea.form-control-lg {
   white-space: nowrap;
   background-color: #e9ecef;
   border: 1px solid #ced4da;
-  border-radius: 0.25rem;
+  
 }
 
 .input-group-lg > .form-control,
@@ -2777,7 +2772,7 @@ textarea.form-control-lg {
 .input-group-lg > .btn {
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
-  border-radius: 0.3rem;
+  
 }
 
 .input-group-sm > .form-control,
@@ -2829,7 +2824,7 @@ textarea.form-control-lg {
   font-size: 0.875rem;
   color: #fff;
   background-color: rgba(25, 135, 84, 0.9);
-  border-radius: 0.25rem;
+  
 }
 
 .was-validated :valid ~ .valid-feedback,
@@ -2918,7 +2913,7 @@ textarea.form-control-lg {
   font-size: 0.875rem;
   color: #fff;
   background-color: rgba(220, 53, 69, 0.9);
-  border-radius: 0.25rem;
+  
 }
 
 .was-validated :invalid ~ .invalid-feedback,
@@ -3005,7 +3000,7 @@ textarea.form-control-lg {
   border: 1px solid transparent;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
-  border-radius: 0.25rem;
+  
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -3480,7 +3475,7 @@ textarea.form-control-lg {
 .btn-lg, .btn-group-lg > .btn {
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
-  border-radius: 0.3rem;
+  
 }
 
 .btn-sm, .btn-group-sm > .btn {
@@ -3564,7 +3559,7 @@ textarea.form-control-lg {
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 0.25rem;
+  
 }
 .dropdown-menu[data-bs-popper] {
   top: 100%;
@@ -3991,7 +3986,7 @@ textarea.form-control-lg {
 .nav-pills .nav-link {
   background: none;
   border: 0;
-  border-radius: 0.25rem;
+  
 }
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
@@ -4085,7 +4080,7 @@ textarea.form-control-lg {
   line-height: 1;
   background-color: transparent;
   border: 1px solid transparent;
-  border-radius: 0.25rem;
+  
   transition: box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -4513,7 +4508,7 @@ textarea.form-control-lg {
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
+  
 }
 .card > hr {
   margin-right: 0;
@@ -4672,7 +4667,7 @@ textarea.form-control-lg {
   text-align: left;
   background-color: #fff;
   border: 0;
-  border-radius: 0;
+  
   overflow-anchor: none;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0.15s ease;
 }
@@ -4758,7 +4753,7 @@ textarea.form-control-lg {
 .accordion-flush .accordion-item {
   border-right: 0;
   border-left: 0;
-  border-radius: 0;
+  
 }
 .accordion-flush .accordion-item:first-child {
   border-top: 0;
@@ -4767,7 +4762,7 @@ textarea.form-control-lg {
   border-bottom: 0;
 }
 .accordion-flush .accordion-item .accordion-button {
-  border-radius: 0;
+  
 }
 
 .breadcrumb {
@@ -4890,7 +4885,7 @@ textarea.form-control-lg {
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  border-radius: 0.25rem;
+  
 }
 .badge:empty {
   display: none;
@@ -4906,7 +4901,7 @@ textarea.form-control-lg {
   padding: 1rem 1rem;
   margin-bottom: 1rem;
   border: 1px solid transparent;
-  border-radius: 0.25rem;
+  
 }
 
 .alert-heading {
@@ -5017,7 +5012,7 @@ textarea.form-control-lg {
   overflow: hidden;
   font-size: 0.75rem;
   background-color: #e9ecef;
-  border-radius: 0.25rem;
+  
 }
 
 .progress-bar {
@@ -5058,7 +5053,7 @@ textarea.form-control-lg {
   flex-direction: column;
   padding-left: 0;
   margin-bottom: 0;
-  border-radius: 0.25rem;
+  
 }
 
 .list-group-numbered {
@@ -5266,7 +5261,7 @@ textarea.form-control-lg {
   }
 }
 .list-group-flush {
-  border-radius: 0;
+  
 }
 .list-group-flush > .list-group-item {
   border-width: 0 0 1px;
@@ -5395,7 +5390,7 @@ textarea.form-control-lg {
   color: #000;
   background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
   border: 0;
-  border-radius: 0.25rem;
+  
   opacity: 0.5;
 }
 .btn-close:hover {
@@ -5430,7 +5425,7 @@ textarea.form-control-lg {
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  border-radius: 0.25rem;
+  
 }
 .toast.showing {
   opacity: 0;
@@ -5532,7 +5527,7 @@ textarea.form-control-lg {
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 0.3rem;
+  
   outline: 0;
 }
 
@@ -5631,16 +5626,16 @@ textarea.form-control-lg {
 .modal-fullscreen .modal-content {
   height: 100%;
   border: 0;
-  border-radius: 0;
+  
 }
 .modal-fullscreen .modal-header {
-  border-radius: 0;
+  
 }
 .modal-fullscreen .modal-body {
   overflow-y: auto;
 }
 .modal-fullscreen .modal-footer {
-  border-radius: 0;
+  
 }
 
 @media (max-width: 575.98px) {
@@ -5653,16 +5648,16 @@ textarea.form-control-lg {
   .modal-fullscreen-sm-down .modal-content {
     height: 100%;
     border: 0;
-    border-radius: 0;
+    
   }
   .modal-fullscreen-sm-down .modal-header {
-    border-radius: 0;
+    
   }
   .modal-fullscreen-sm-down .modal-body {
     overflow-y: auto;
   }
   .modal-fullscreen-sm-down .modal-footer {
-    border-radius: 0;
+    
   }
 }
 @media (max-width: 767.98px) {
@@ -5675,16 +5670,16 @@ textarea.form-control-lg {
   .modal-fullscreen-md-down .modal-content {
     height: 100%;
     border: 0;
-    border-radius: 0;
+    
   }
   .modal-fullscreen-md-down .modal-header {
-    border-radius: 0;
+    
   }
   .modal-fullscreen-md-down .modal-body {
     overflow-y: auto;
   }
   .modal-fullscreen-md-down .modal-footer {
-    border-radius: 0;
+    
   }
 }
 @media (max-width: 991.98px) {
@@ -5697,16 +5692,16 @@ textarea.form-control-lg {
   .modal-fullscreen-lg-down .modal-content {
     height: 100%;
     border: 0;
-    border-radius: 0;
+    
   }
   .modal-fullscreen-lg-down .modal-header {
-    border-radius: 0;
+    
   }
   .modal-fullscreen-lg-down .modal-body {
     overflow-y: auto;
   }
   .modal-fullscreen-lg-down .modal-footer {
-    border-radius: 0;
+    
   }
 }
 @media (max-width: 1199.98px) {
@@ -5719,16 +5714,16 @@ textarea.form-control-lg {
   .modal-fullscreen-xl-down .modal-content {
     height: 100%;
     border: 0;
-    border-radius: 0;
+    
   }
   .modal-fullscreen-xl-down .modal-header {
-    border-radius: 0;
+    
   }
   .modal-fullscreen-xl-down .modal-body {
     overflow-y: auto;
   }
   .modal-fullscreen-xl-down .modal-footer {
-    border-radius: 0;
+    
   }
 }
 @media (max-width: 1399.98px) {
@@ -5741,16 +5736,16 @@ textarea.form-control-lg {
   .modal-fullscreen-xxl-down .modal-content {
     height: 100%;
     border: 0;
-    border-radius: 0;
+    
   }
   .modal-fullscreen-xxl-down .modal-header {
-    border-radius: 0;
+    
   }
   .modal-fullscreen-xxl-down .modal-body {
     overflow-y: auto;
   }
   .modal-fullscreen-xxl-down .modal-footer {
-    border-radius: 0;
+    
   }
 }
 .tooltip {
@@ -5850,7 +5845,7 @@ textarea.form-control-lg {
   color: #fff;
   text-align: center;
   background-color: #000;
-  border-radius: 0.25rem;
+  
 }
 
 .popover {
@@ -5879,7 +5874,7 @@ textarea.form-control-lg {
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 0.3rem;
+  
 }
 .popover .popover-arrow {
   position: absolute;
@@ -6208,7 +6203,7 @@ textarea.form-control-lg {
   vertical-align: -0.125em;
   border: 0.25em solid currentColor;
   border-right-color: transparent;
-  border-radius: 50%;
+  
   -webkit-animation: 0.75s linear infinite spinner-border;
           animation: 0.75s linear infinite spinner-border;
 }
@@ -6244,7 +6239,7 @@ textarea.form-control-lg {
   height: 2rem;
   vertical-align: -0.125em;
   background-color: currentColor;
-  border-radius: 50%;
+  
   opacity: 0;
   -webkit-animation: 0.75s linear infinite spinner-grow;
           animation: 0.75s linear infinite spinner-grow;
@@ -7940,7 +7935,7 @@ textarea.form-control-lg {
 }
 
 .rounded-pill {
-  border-radius: 50rem !important;
+ 
 }
 
 .rounded-top {
@@ -11316,7 +11311,6 @@ textarea.form-control-lg {
     padding: 0 20px;
     font-size: 1rem;
     border: 1px solid #D0CFCE;
-    border-radius: 5px;
     outline: none;
     &:focus{
       border: 1px solid #008ABF;

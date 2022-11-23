@@ -31,7 +31,7 @@ class ProductSeeder extends Seeder
             [   
                 'id'              => '2',
                 'image'           => 'p2.jpeg',
-                'name'            => 'Sample Product',
+                'name'            => 'Sample Product2',
                 'category_id'     => '2',
                 'description'     => 'This is sample product',
                 'expiration'      => '2023-09-21',
@@ -43,7 +43,7 @@ class ProductSeeder extends Seeder
             [   
                 'id'              => '3',
                 'image'           => 'p3.jpeg',
-                'name'            => 'Sample Product',
+                'name'            => 'Sample Product3',
                 'category_id'     => '1',
                 'description'     => 'This is sample product',
                 'expiration'      => '2023-09-21',
@@ -55,7 +55,7 @@ class ProductSeeder extends Seeder
             [   
                 'id'              => '4',
                 'image'           => 'p1.jpeg',
-                'name'            => 'Sample Product',
+                'name'            => 'Sample Product4',
                 'category_id'     => '2',
                 'description'     => 'This is sample product',
                 'expiration'      => '2023-09-21',
@@ -67,7 +67,7 @@ class ProductSeeder extends Seeder
             [   
                 'id'              => '5',
                 'image'           => 'p2.jpeg',
-                'name'            => 'Sample Product',
+                'name'            => 'Sample Product5',
                 'category_id'     => '1',
                 'description'     => 'This is sample product',
                 'expiration'      => '2023-09-21',
@@ -79,7 +79,7 @@ class ProductSeeder extends Seeder
             [   
                 'id'              => '6',
                 'image'           => 'p3.jpeg',
-                'name'            => 'Sample Product',
+                'name'            => 'Sample Product6',
                 'category_id'     => '1',
                 'description'     => 'This is sample product',
                 'expiration'      => '2023-09-21',
@@ -91,7 +91,7 @@ class ProductSeeder extends Seeder
             [   
                 'id'              => '7',
                 'image'           => 'p2.jpeg',
-                'name'            => 'Sample Product',
+                'name'            => 'Sample Product7',
                 'category_id'     => '1',
                 'description'     => 'This is sample product',
                 'expiration'      => '2023-09-21',
@@ -103,7 +103,7 @@ class ProductSeeder extends Seeder
             [   
                 'id'              => '8',
                 'image'           => 'p3.jpeg',
-                'name'            => 'Sample Product',
+                'name'            => 'Sample Product8',
                 'category_id'     => '1',
                 'description'     => 'This is sample product',
                 'expiration'      => '2023-09-21',
@@ -115,7 +115,7 @@ class ProductSeeder extends Seeder
             [   
                 'id'              => '9',
                 'image'           => 'p3.jpeg',
-                'name'            => 'Sample Product',
+                'name'            => 'Sample Product9',
                 'category_id'     => '1',
                 'description'     => 'This is sample product',
                 'expiration'      => '2022-10-06',
@@ -127,7 +127,7 @@ class ProductSeeder extends Seeder
             [   
                 'id'              => '10',
                 'image'           => 'p2.jpeg',
-                'name'            => 'Sample Product',
+                'name'            => 'Sample Product10',
                 'category_id'     => '1',
                 'description'     => 'This is sample product',
                 'expiration'      => '2022-11-06',
@@ -139,7 +139,7 @@ class ProductSeeder extends Seeder
             [   
                 'id'              => '11',
                 'image'           => 'p3.jpeg',
-                'name'            => 'Sample Product',
+                'name'            => 'Sample Product11',
                 'category_id'     => '1',
                 'description'     => 'This is sample product',
                 'expiration'      => '2022-12-06',

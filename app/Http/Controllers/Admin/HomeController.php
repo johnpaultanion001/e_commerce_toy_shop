@@ -24,11 +24,6 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
         $userrole = auth()->user()->role;
@@ -45,11 +40,38 @@ class HomeController extends Controller
 
             $sales = OrderProduct::where('isCheckout', '1')->where('status','APPROVED')->sum('amount');
             $sales_today = OrderProduct::where('isCheckout', '1')->where('status','APPROVED')->whereDay('created_at', '=', date('d'))->sum('amount');
-            
-            $product_exp = Product::where("expiration","<", Carbon::now()->addMonths(3))->get();
-            $exp_label  = 'From: ' . date('F d, Y') . ' To: ' . Carbon::now()->addMonths(3)->format('F d, Y');
+        
+        
+        $data = OrderProduct::select(
+            \DB::raw("SUM(amount) as amount"),
+            \DB::raw("SUM(qty) as sold"),
+            \DB::raw("product_id as product"))
+            ->where('isCheckout', true)
+            ->where('status', 'APPROVED')
+            ->groupBy('product')
+            ->orderBy('product', 'ASC')
+            ->get();
+        $result_sales = [];
+        $result_sold = [];
 
-            return view('admin.home', compact('products','products_today','customers','customers_today', 'orders','orders_today','sales','sales_today','product_exp','exp_label'));
+        foreach($data as $row) {
+            $product_name = Product::where('id', $row->product)->first();
+            $result_sales['label'][] = $product_name->name;
+            $result_sales['data'][] =  $row->amount;
+        }
+
+        foreach($data as $row) {
+            $product_name = Product::where('id', $row->product)->first();
+            $result_sold['label'][] = $product_name->name;
+            $result_sold['data'][] =  $row->sold;
+        }
+
+        $sales_results = json_encode($result_sales);
+        $sold_results = json_encode($result_sold);
+
+
+
+            return view('admin.home', compact('products','products_today','customers','customers_today', 'orders','orders_today','sales','sales_today','sales_results','sold_results'));
         }
         return abort('403');
     }

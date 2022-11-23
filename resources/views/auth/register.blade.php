@@ -97,7 +97,7 @@ background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, F
                       </div>
 
                       <div class="text-center">
-                        <button type="submit" class="btn bg-primary w-100 my-4 mb-2">REGISTER</button>
+                        <button type="submit" class="btn btn-primary w-100 my-4 mb-2">REGISTER</button>
                       </div>
                       
                       <p class="mt-4 text-sm text-center">

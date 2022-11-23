@@ -56,9 +56,6 @@
                                             </td>
                                             <td>
                                                 {{$order->product->name ?? ''}}
-                                                @if($order->isPromo == '1')
-                                                    <span class="badge bg-warning">BUY 1 TAKE 1</span>
-                                                @endif   
                                             </td>
                                             <td>
                                                 {{$order->price ?? ''}}

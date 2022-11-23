@@ -23,7 +23,6 @@ class CreateOrderProductsTable extends Migration
             $table->float('amount');
             $table->float('price');
             $table->boolean('isCheckout')->default(false);
-            $table->boolean('isPromo')->default(false);
             $table->string('status')->default('PENDING');
             $table->timestamps();
         });

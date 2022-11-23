@@ -18,7 +18,7 @@
                                 <h4 class="mb-0 text-uppercase" id="titletable">Manage Products</h4>
                             </div>
                             <div class="col-md-2">
-                                <button type="button" name="create_record" id="create_record" class="text-uppercase create_record btn btn-sm btn-primary">New Product</button>
+                                <button type="button" name="create_record" id="create_record" class="text-uppercase create_record btn btn-dark">New Product</button>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
@@ -56,7 +56,7 @@
                                     <tr>
                                         <td>
                                             <button type="button" name="edit" edit="{{  $product->id ?? '' }}"  class="edit btn btn-sm btn-success btn-wd">Edit</button>
-                                            <br> <button type="button" name="remove" remove="{{  $product->id ?? '' }}" class="remove btn btn-sm btn-danger btn-wd">Remove</button>
+                                            <button type="button" name="remove" remove="{{  $product->id ?? '' }}" class="remove btn btn-sm btn-danger btn-wd">Remove</button>
                                         </td>
                                         <td>
                                             {{  $product->id ?? '' }}

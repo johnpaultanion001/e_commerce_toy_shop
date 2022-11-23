@@ -44,13 +44,13 @@ background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, F
                         </span>
                         @enderror
                       <div class="text-center">
-                        <button type="submit" class="btn bg-primary w-100 my-4 mb-2">LOGIN</button>
+                        <button type="submit" class="btn btn-primary w-100 my-4 mb-2">LOGIN</button>
                         
                       </div>
                       <p class="mt-4 text-sm text-center">
                         Not register?
                         <a href="/register" class="text-dark font-weight-bold">CREATE ACCOUNT</a> <br> <br>
-                        <!-- <a href="/password/reset/">FORGOT PASSWORD?</a> -->
+                        <a href="/password/reset/">FORGOT PASSWORD?</a>
                       </p>
                       
                 </form>
@@ -65,9 +65,3 @@ background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, F
 
 </script>
 @endsection
-
-
-
-
-
-

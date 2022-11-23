@@ -18,14 +18,14 @@ background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, F
 </header>
 
 <section class="py-5" style="min-height: 70vh;">
-    <div class="row">
-        <div class="col-md-8 mt-4 mx-auto">
+    <div class="row m-2">
+        <div class="col-md-6 mt-4 mx-auto">
             
             <div class="card h-100 mb-4">
-                    <div class="card-header pb-0 px-3">
+                    <div class="card-header pb-0 px-3 bg-warning">
                         <div class="row">
                             <div class="col-md-6">
-                                <h6 class="mb-0 text-uppercase">Your Pending Orders</h6>
+                                <h6 class="mb-0 text-uppercase text-white">Your Pending Orders</h6>
                             </div>
                         
                         </div>
@@ -33,28 +33,28 @@ background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, F
                     <div class="card-body pt-4 p-3">
                             <ul class="list-group">
                                 @forelse($orders as $order)
-                                    <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                                        <div class="d-flex align-items-center">
-                                            <button class="btn btn-icon-only btn-rounded btn-outline-warning mb-0 me-3 p-3 btn-sm d-flex align-items-center justify-content-center"><i class="bi bi-bag-dash-fill"></i></button>
-                                            <div class="d-flex flex-column">
+                                    <li class="list-group-item ">
+                                        <div class=" row">
+                                            <div class="col-md-6">
                                                 <h6 class="mb-1 text-dark text-sm">
                                                     @foreach($order->orderproducts as $product_order)
                                                         <span class="badge bg-warning">{{$product_order->qty ?? ''}} {{$product_order->product->name ?? ''}} * {{$product_order->price ?? ''}} = {{$product_order->amount ?? ''}}</span>
-                                                        @if($product_order->isPromo == '1')
-                                                            <span class="badge bg-warning">BUY 1 TAKE 1</span>
-                                                        @endif
+                                                    
                                                         <br>
                                                     @endforeach
                                                 </h6>
                                                 <h6 class="text-xs text-uppercase"> {{ $order->created_at->format('M j , Y h:i A') }}</h6>
                                                 
                                                 <h6 class="text-s mt-2 text-warning">{{$order->status ?? ''}}</h6>
-                                                <hr>
+                                            </div>
+                                            <div class="col-md-6">
                                                 <h6  class="text-s mt-2">SUBTOTAL: <span class="text-primary"> ₱  {{number_format($order->orderproducts->sum->amount?? '' , 2, '.', ',')}}</span> </h6>
                                                 <h6  class="text-s mt-2">TOTAL: <span class="text-primary"> ₱  {{number_format($order->orderproducts->sum->amount?? '' , 2, '.', ',')}}</span> </h6>
                                                 <h6  class="text-s mt-2 text-uppercase">SHIPPING OPTIONS:   <span class="badge bg-primary"> {{$order->shipping_option}} </span></h6>
                                                 <button class="btn btn-danger btn-sm cancel" cancel="{{$order->id}}">CANCEL</button>
                                             </div>
+                                            
+                                            
                                         </div>
                                         
                                     </li>
@@ -69,13 +69,13 @@ background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, F
             </div>
         </div>
 
-        <div class="col-md-8 mt-4 mx-auto">
+        <div class="col-md-6 mt-4 mx-auto">
             
             <div class="card h-100 mb-4">
-                    <div class="card-header pb-0 px-3">
+                    <div class="card-header pb-0 px-3 bg-success">
                         <div class="row">
                             <div class="col-md-6">
-                                <h6 class="mb-0 text-uppercase">Your Approved Orders</h6>
+                                <h6 class="mb-0 text-uppercase text-white">Your Approved Orders</h6>
                             </div>
                         
                         </div>
@@ -85,7 +85,7 @@ background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, F
                                 @forelse($orders_approved as $order)
                                     <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                                         <div class="d-flex align-items-center">
-                                            <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 p-3 btn-sm d-flex align-items-center justify-content-center"><i class="bi bi-bag-dash-fill"></i></button>
+                                            
                                             <div class="d-flex flex-column">
                                                 <h6 class="mb-1 text-dark text-sm">
                                                     @foreach($order->orderproducts as $product_order)

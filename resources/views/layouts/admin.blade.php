@@ -91,7 +91,10 @@
     
     </style>
 </head>
-    <body class="g-sidenav-show  bg-gray-200">
+    <body class="g-sidenav-show " style="background: #bdc3c7;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
         <!-- sidebar -->
         @yield('sidebar')
 
@@ -165,6 +168,11 @@
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.min.js"></script>
 
+
+
+        <script src="{{ asset('assets/vendor/chart.js/Chart.min.js') }}"></script>
+        <script src="{{ asset('assets/vendor/demo/chart-area-demo.js') }}"></script>
+        <script src="{{ asset('assets/vendor/demo/chart-pie-demo.js') }}"></script>
         
 
 
@@ -196,7 +204,7 @@
         
             {
             extend: 'excel',
-            className: 'btn-primary btn-sm m-2',
+            className: 'btn-dark btn-sm m-2',
             text: excelButtonTrans,
             exportOptions: {
                 columns: ':visible'
@@ -204,7 +212,7 @@
             },
             {
             extend: 'pdf',
-            className: 'btn-primary btn-sm m-2',
+            className: 'btn-dark btn-sm m-2',
             text: pdfButtonTrans,
             exportOptions: {
                 columns: ':visible'
@@ -212,7 +220,7 @@
             },
             {
             extend: 'print',
-            className: 'btn-primary btn-sm m-2',
+            className: 'btn-dark btn-sm m-2',
             text: printButtonTrans,
             exportOptions: {
                 columns: ':visible'
@@ -221,7 +229,7 @@
             
             {
             extend: 'colvis',
-            className: 'btn-primary btn-sm m-2',
+            className: 'btn-dark btn-sm m-2',
             text: colvisButtonTrans,
             exportOptions: {
                 columns: ':visible'

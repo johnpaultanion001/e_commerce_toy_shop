@@ -5,14 +5,15 @@
 
 @section('content')
 <header class="py-2" style="
-background: #FBD3E9;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #BB377D, #FBD3E9);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #BB377D, #FBD3E9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: #bdc3c7;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 
 ">
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
-            <h4 class="">ACCOUNT</h4>
+            <h4 class="">UPDATE ACCOUNT</h4>
         </div>
     </div>
 </header>
@@ -65,10 +66,9 @@ background: linear-gradient(to right, #BB377D, #FBD3E9); /* W3C, IE 10+/ Edge, F
                             <div class="text-center">
                                         <br>
                                         <br>
-                                    <button type="submit" name="action_button" id="action_button"  class="btn btn-primary">Update Information</button>
-                                        <br>
-                                        <br>
-                                    <button type="button" class="btn btn-warning" id="btn_change_password">Change Password</button>
+                                    <button type="submit" name="action_button" id="action_button"  class="btn btn-primary text-uppercase">Update Information</button>
+                                      
+                                    <button type="button" class="btn btn-warning text-uppercase" id="btn_change_password">Change Password</button>
                             </div>
                     </form>
                 </div>
@@ -84,7 +84,7 @@ background: linear-gradient(to right, #BB377D, #FBD3E9); /* W3C, IE 10+/ Edge, F
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-               
+                    <h5 class="modal-title">PASSWORD</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                     <i class="fas fa-times text-primary"></i>
                 </button>
@@ -117,7 +117,7 @@ background: linear-gradient(to right, #BB377D, #FBD3E9); /* W3C, IE 10+/ Edge, F
                     
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">CANCEL</button>
                     <input type="submit" name="cp_action_button" id="cp_action_button" class="btn  btn-primary" value="UPDATE"/>
                 </div>
             </div>
