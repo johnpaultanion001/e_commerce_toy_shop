@@ -49,7 +49,8 @@ background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, F
                                             </div>
                                             <div class="col-md-6">
                                                 <h6  class="text-s mt-2">SUBTOTAL: <span class="text-primary"> ₱  {{number_format($order->orderproducts->sum->amount?? '' , 2, '.', ',')}}</span> </h6>
-                                                <h6  class="text-s mt-2">TOTAL: <span class="text-primary"> ₱  {{number_format($order->orderproducts->sum->amount?? '' , 2, '.', ',')}}</span> </h6>
+                                                <h6  class="text-s mt-2">SHIPPING FEE: <span class="text-primary"> ₱  {{number_format($order->shipping_fee ?? '' , 2, '.', ',')}}</span> </h6>
+                                                <h6  class="text-s mt-2">TOTAL: <span class="text-primary"> ₱  {{number_format($order->total_amount ?? '' , 2, '.', ',')}}</span> </h6>
                                                 <h6  class="text-s mt-2 text-uppercase">SHIPPING OPTIONS:   <span class="badge bg-primary"> {{$order->shipping_option}} </span></h6>
                                                 <button class="btn btn-danger btn-sm cancel" cancel="{{$order->id}}">CANCEL</button>
                                             </div>
@@ -83,76 +84,26 @@ background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, F
                     <div class="card-body pt-4 p-3">
                             <ul class="list-group">
                                 @forelse($orders_approved as $order)
-                                    <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                                        <div class="d-flex align-items-center">
-                                            
-                                            <div class="d-flex flex-column">
+                                    <li class="list-group-item">
+                                        <div class="row">
+                                            <div class="col-md-6">
                                                 <h6 class="mb-1 text-dark text-sm">
-                                                    @foreach($order->orderproducts as $product_order)
-                                                        <span class="badge bg-success">{{$product_order->qty ?? ''}} {{$product_order->product->name ?? ''}} * {{$product_order->price ?? ''}} = {{$product_order->amount ?? ''}}</span> 
-                                                        @if($product_order->isPromo == '1')
-                                                            <span class="badge bg-warning">BUY 1 TAKE 1</span>
+                                                        @foreach($order->orderproducts as $product_order)
+                                                            <span class="badge bg-success">{{$product_order->qty ?? ''}} {{$product_order->product->name ?? ''}} * {{$product_order->price ?? ''}} = {{$product_order->amount ?? ''}}</span> 
+                                                                    
                                                             
-                                                        @endif                
-                                                        <br> 
-                                                        @php
-                                                            $isStar = App\Models\Review::where('order_id', $product_order->order_id)->where('product_id', $product_order->product->id)
-                                                                                            ->where('user_id', auth()->user()->id)->first();
-                                                        @endphp
-                                                        <a id="reviews_count{{$product_order->product->id}}" class="link-primary" data-toggle="collapse" href="#collapseExample{{$product_order->product->id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                            {{$isStar == null ? 'Add your review':'Edit your review'}}   
-                                                        </a>      
-                                                         <br>
-                                                        <div class="collapse mt-3" id="collapseExample{{$product_order->product->id}}">
-                                                            <div class="card card-body text-left">
-                                                                <form method="post" class="myReviewForm">
-                                                                    @csrf
-                                                                    <div class="input-group">
-                                                                        
-                                                                        <i class="bi bi-star-fill m-3 isStar {{$isStar->isStar ?? '' == true ? 'text-warning':''}}" product_id="{{$product_order->product->id}}" id="isStarIcon{{$product_order->product->id}}" style="cursor: pointer;"></i>
-                                                                        <input type="hidden" class="form-control" id="isStar{{$product_order->product->id}}" name="isStar"  value="{{$isStar->isStar ?? '0'}}" readonly>
-                                                                        <input type="text" class="form-control review" name="review" placeholder="Enter a message" required>
-                                                                        <input type="hidden" class="form-control" name="product_id" value="{{$product_order->product->id}}" readonly>
-                                                                        <input type="hidden" class="form-control" name="order_id" value="{{$product_order->order_id}}" readonly>
-                                                                        <div class="input-group-append">
-                                                                            <span class="input-group-text"><button  type="submit" class="btn text-primary" style="background-color:transparent;" >SUBMIT</button></span>
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                                <div id="review_section{{$product_order->product->id}}" style="max-height: 300px; overflow-y : auto;">
-                                                                        @if($product_order->product->reviews()->count() < 1)
-                                                                        <hr>
-                                                                            <b> NO REVIEW FOUND</b>  <br>
-                                                                        @else
-                                                                        @foreach($product_order->product->reviews()->get() as $review)
-                                                                        <hr>
-                                                                            <div class="row">
-                                                                                <div class="col-2">
-                                                                                    <i class="bi bi-star-fill m-3 {{$review->isStar == true ? 'text-warning':''}}"></i>
-                                                                                </div>
-                                                                                <div class="col-10">
-                                                                                    <b> {{$review->user->name ?? ''}}</b>  <br>
-                                                                                    <h6>{{$review->review ?? ''}}</h6> <br>
-                                                                                    <small class="mb-0">{{$review->created_at->diffForHumans()}}</small>
-                                                                                </div>
-                                                                            </div>
-                                                                           
-                                                                        @endforeach
-                                                                    @endif
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <br>                      
-                                                    @endforeach
-                                                </h6>
-                                                <h6 class="text-xs text-uppercase"> {{ $order->created_at->format('M j , Y h:i A') }}</h6>
-                                                
-                                                <h6 class="text-s mt-2 text-success">{{$order->status ?? ''}}</h6>
-                                                <hr>
+                                                            <br>                      
+                                                        @endforeach
+                                                    </h6>
+                                                    <h6 class="text-xs text-uppercase"> {{ $order->created_at->format('M j , Y h:i A') }}</h6>
+                                                    
+                                                    <h6 class="text-s mt-2 text-success">{{$order->status ?? ''}}</h6>
+                                            </div>
+                                            <div class="col-md-6">
                                                 <h6  class="text-s mt-2">SUBTOTAL: <span class="text-primary"> ₱  {{number_format($order->orderproducts->sum->amount?? '' , 2, '.', ',')}}</span> </h6>
-                                                <h6  class="text-s mt-2">TOTAL: <span class="text-primary"> ₱  {{number_format($order->orderproducts->sum->amount?? '' , 2, '.', ',')}}</span> </h6>
+                                                 <h6  class="text-s mt-2">SHIPPING FEE: <span class="text-primary"> ₱  {{number_format($order->shipping_fee ?? '' , 2, '.', ',')}}</span> </h6>
+                                                <h6  class="text-s mt-2">TOTAL: <span class="text-primary"> ₱  {{number_format($order->total_amount ?? '' , 2, '.', ',')}}</span> </h6>
                                                 <h6  class="text-s mt-2 text-uppercase">SHIPPING OPTIONS:   <span class="badge bg-primary"> {{$order->shipping_option}} </span></h6>
-                                               
                                             </div>
                                         </div>
                                         

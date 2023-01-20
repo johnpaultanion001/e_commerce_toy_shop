@@ -13,8 +13,7 @@ background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, F
 ">
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">{{ trans('panel.site_title') }}</h1>
-            <p class="lead fw-normal text-white-50 mb-0">REGISTER</p>
+            <img src="/assets/img/logo.jpg" width="150" height="150" class="d-inline-block align-top" alt="">
         </div>
     </div>
 </header>
@@ -22,7 +21,8 @@ background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, F
 <section class="py-5" style="margin-top: -100px; height: 60vh;">
         <div class="justify-content-center col-lg-7 mx-auto">
            <div class="card z-index-0 fadeIn3 fadeInBottom">
-              <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+              <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 text-center">
+                <h1>REGISTER ACCOUNT</h1>
               </div>
               <div class="card-body">
                 <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">

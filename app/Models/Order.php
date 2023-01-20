@@ -13,6 +13,8 @@ class Order extends Model
         'user_id',
         'status',
         'shipping_option',
+        'shipping_fee',
+        'total_amount',
     ];
 
     public function orderproducts()

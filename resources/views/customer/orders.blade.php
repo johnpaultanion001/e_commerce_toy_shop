@@ -83,11 +83,20 @@ background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, F
                                     </li>
                                     <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2 pt-0">
                                         <div class="d-flex align-items-start flex-column justify-content-center">
+                                            <h6 class="mb-0">SHIPPING FEE</h6>
+                                        </div>
+                                        <div class="ms-auto text-primary" id="shipping_fee">
+                                            ₱ 0.00
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2 pt-0">
+                                        <div class="d-flex align-items-start flex-column justify-content-center">
                                             <h6 class="mb-0">TOTAL AMOUNT</h6>
                                         </div>
-                                        <div class="ms-auto text-primary">
+                                        <div class="ms-auto text-primary" id="total_amount">
                                             ₱ {{ number_format($orders->sum->amount ?? '' , 2, '.', ',') }}
                                         </div>
+                                        <input type="hidden" id="total_amount_field" value="{{$orders->sum->amount}}" step="any">
                                     </li>
 
                                     <button class="btn-primary btn " id="checkout">CHECK OUT</button>
@@ -401,6 +410,28 @@ background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, F
         });
         
     });
+
+    $(document).on('change', '#shipping_option' , function(){
+        var total , shipping_fee , total_amount;
+
+        if($(this).val() == 'pickUp'){
+            shipping_fee = 0;
+            total_amount = parseFloat($('#total_amount_field').val());
+            total = shipping_fee + total_amount;
+
+            $('#shipping_fee').text('₱ 0.00');
+            $('#total_amount').text('₱ '+total+'.00');
+        }else{
+            shipping_fee = 100;
+            total_amount = parseFloat($('#total_amount_field').val());
+            total = shipping_fee + total_amount;
+
+            $('#shipping_fee').text('₱ 100.00');
+            $('#total_amount').text('₱ '+total+'.00');
+        }
+        
+    });
+    
 </script>
 @endsection
 

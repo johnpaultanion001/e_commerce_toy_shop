@@ -26,6 +26,7 @@
                                     <th scope="col">STATUS</th>
                                     <th scope="col">ORDER ID</th>
                                     <th scope="col">SHIPPING OPTION</th>
+                                    <th scope="col">SHIPPING FEE</th>
                                     <th scope="col">CUSTOMER NAME</th>
                                     <th scope="col">PRODUCT BUY</th>
                                     <th scope="col">AMOUNT</th>
@@ -56,6 +57,9 @@
                                             <span class="badge bg-primary">{{  $order->shipping_option ?? '' }}</span>
                                         </td>
                                         <td>
+                                            ₱  {{ number_format($order->shipping_fee  ?? '' , 2, '.', ',') }}
+                                        </td>
+                                        <td>
                                             {{  $order->user->name ?? '' }}
                                         </td>
                                         <td>
@@ -69,7 +73,7 @@
                                             
                                         </td>
                                         <td>
-                                            <span class="text-success">₱ </span> {{ number_format($order->orderproducts->sum('amount') ?? '' , 2, '.', ',') }} 
+                                            ₱ {{ number_format($order->total_amount  ?? '' , 2, '.', ',') }}
                                         </td>
                                         <td>
                                             {{ $order->created_at->format('M j , Y h:i A') }}

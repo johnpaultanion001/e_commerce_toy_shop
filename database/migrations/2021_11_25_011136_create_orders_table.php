@@ -18,6 +18,8 @@ class CreateOrdersTable extends Migration
             $table->string('status')->default("PENDING");
             $table->string('user_id');
             $table->string('shipping_option');
+            $table->float('shipping_fee');
+            $table->float('total_amount');
             $table->timestamps();
         });
     }

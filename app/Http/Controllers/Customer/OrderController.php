@@ -144,10 +144,22 @@ class OrderController extends Controller
         if($ordercount < 1){
             return response()->json(['nodata' => 'No data available']);
         }       
+        if($request->get('shipping') == 'pickUp'){
+            $fee = 0;
+            $total_amount = $orderproducts->sum->amount;
+            $total = $fee + $total_amount;
+        }else{
+            $fee = 100;
+            $total_amount = $orderproducts->sum->amount;
+            $total = $fee + $total_amount;
+        }
+        
 
         $orders = Order::create([
             'user_id'   => auth()->user()->id,
-            'shipping_option' => $request->get('shipping')
+            'shipping_option' => $request->get('shipping'),
+            'shipping_fee'  => $fee,
+            'total_amount' => $total,
         ]);
         foreach($orderproducts as $order){
                 if($order->qty > $order->product->stock){
