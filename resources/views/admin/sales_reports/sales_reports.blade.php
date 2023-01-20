@@ -74,6 +74,17 @@
                                         </tr>       
                                 @endforeach
                             </tbody>
+                            <tfoot class="text-uppercase font-weight-bold">
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>TOTAL AMOUNT</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -94,23 +105,62 @@
 
 
 $(function () {
-    let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-
-    $.extend(true, $.fn.dataTable.defaults, {
-    pageLength: 100,
+   
+    var title = 'title';
+    var header =  'title';
+    $('.datatable-table').DataTable({
+        bDestroy: true,
+        responsive: true,
+        scrollY: 500,
+        scrollCollapse: true,
+        buttons: [
+            { 
+                extend: 'excel',
+                className: 'btn btn-dark m-2',
+                footer: true,
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            { 
+                extend: 'print',
+                footer: true,
+                className: 'btn btn-dark m-2',
+                
+            }
+        ],
+        footerCallback: function (row, data, start, end, display) {
+            var api = this.api();
+            var intVal = function (i) {
+                return typeof i === 'string' ? i.replace(/[^\d.-]/g, '') * 1 : typeof i === 'number' ? i : 0;
+            };
+            
+            
+            total = api
+                .column(5)
+                .data()
+                .reduce(function (a, b) {
+                    return intVal(a) + intVal(b);
+            }, 0);
+         
+           
+            $(api.column(5).footer()).html(number_format(total, 2,'.', ','));
+          
+            
+        },
     });
-
-    $('.datatable-table:not(.ajaxTable)').DataTable({ buttons: dtButtons });
-    $('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
-        $($.fn.dataTable.tables(true)).DataTable()
-            .columns.adjust();
-        });
 });
+
+function table_report(){
+  
+}
+
 
 $('#filter_dd').on("change", function(event){
     var date = $(this).val();
     window.location.href = '/admin/sales_reports/'+date;
 });
+
 
 
 
