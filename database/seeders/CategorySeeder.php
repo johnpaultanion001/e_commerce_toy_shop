@@ -17,25 +17,25 @@ class CategorySeeder extends Seeder
     {
         $categories = [
             [
-                'name'              => 'Toners',
+                'name'              => 'One Piece',
                 
                 'created_at'          => date("Y-m-d H:i:s"),
                 'updated_at'          => date("Y-m-d H:i:s"),
             ],
             [
-                'name'             => 'Office Supplies',
+                'name'             => 'Bleach',
                 
                 'created_at'          => date("Y-m-d H:i:s"),
                 'updated_at'          => date("Y-m-d H:i:s"),
             ],
             [
-                'name'             => 'Inkjets',
+                'name'             => 'Dragon Ball',
                 
                 'created_at'          => date("Y-m-d H:i:s"),
                 'updated_at'          => date("Y-m-d H:i:s"),
             ],
             [
-                'name'             => 'Ribbon',
+                'name'             => 'Naruto',
                 
                 'created_at'          => date("Y-m-d H:i:s"),
                 'updated_at'          => date("Y-m-d H:i:s"),

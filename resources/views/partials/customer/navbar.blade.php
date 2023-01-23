@@ -39,7 +39,7 @@
                 $orders =  App\Models\OrderProduct::where('user_id', auth()->user()->id ?? '')
                             ->where('isCheckout', 0)->count();
             @endphp
-            <a class="btn btn-primary" href="/customer/orders">
+            <a class="btn btn-success" href="/customer/orders">
                 <i class="bi-cart-fill me-1"></i>
                 ORDERS
                 <span class="badge btn-outline-danger text-white ms-1 rounded-pill">{{$orders ?? '0'}}</span>

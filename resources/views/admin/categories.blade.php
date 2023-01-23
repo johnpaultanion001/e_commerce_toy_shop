@@ -15,10 +15,10 @@
                     <div class="card-header border-0">
                         <div class="row ">
                             <div class="col-md-10">
-                                <h4 class="mb-0 text-uppercase" id="titletable">Manage Category</h4>
+                                <h4 class="mb-0 text-uppercase" id="titletable">Manage Collections</h4>
                             </div>
                             <div class="col-md-2">
-                                <button type="button" name="create_record" id="create_record" class="text-uppercase create_record btn btn-sm btn-primary">NEW CATEGORY</button>
+                                <button type="button" name="create_record" id="create_record" class="text-uppercase create_record btn btn-sm btn-primary">NEW COLLECTION</button>
                             </div>
                         </div>
                     </div>
@@ -127,7 +127,7 @@ $(document).on('click', '#create_record', function(){
     $('#formModal').modal('show');
     $('#myForm')[0].reset();
     $('.form-control').removeClass('is-invalid')
-    $('.modal-title').text('ADD CATEGORY');
+    $('.modal-title').text('ADD COLLECTION');
     $('#action_button').val('Submit');
     $('#action').val('Add');
 });
@@ -195,7 +195,7 @@ $('#myForm').on('submit', function(event){
 
 $(document).on('click', '.edit', function(){
     $('#formModal').modal('show');
-    $('.modal-title').text('EDIT CATEGORY');
+    $('.modal-title').text('EDIT COLLECTION');
     $('#myForm')[0].reset();
     $('.form-control').removeClass('is-invalid');
 

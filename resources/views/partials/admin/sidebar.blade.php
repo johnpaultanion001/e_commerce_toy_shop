@@ -10,7 +10,7 @@
   <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link text-dark {{ request()->is('admin/dashboard') || request()->is('admin/dashboard/*') ? 'bg-gradient-dark text-white' : '' }}" href="{{ route("admin.dashboard") }}">
+        <a class="nav-link text-dark {{ request()->is('admin/dashboard') || request()->is('admin/dashboard/*') ? 'bg-gradient-success text-white' : '' }}" href="{{ route("admin.dashboard") }}">
           <div class="text-dark text-center me-2 d-flex align-items-center justify-content-center">
             <i class="material-icons opacity-10 {{ request()->is('admin/dashboard') || request()->is('admin/dashboard/*') ? 'text-white' : '' }}">dashboard</i>
           </div>
@@ -19,7 +19,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link text-dark {{ request()->is('admin/products') || request()->is('admin/products/*') ? 'bg-gradient-dark text-white' : '' }}" href="{{ route("admin.products.index") }}">
+        <a class="nav-link text-dark {{ request()->is('admin/products') || request()->is('admin/products/*') ? 'bg-gradient-success text-white' : '' }}" href="{{ route("admin.products.index") }}">
           <div class="text-dark text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fas fa-list {{ request()->is('admin/products') || request()->is('admin/products/*') ? 'text-white' : '' }}" style="font-size: 17px"></i>
           </div>
@@ -29,7 +29,7 @@
       
 
       <li class="nav-item">
-        <a class="nav-link text-dark {{ request()->is('admin/orders') || request()->is('admin/orders/*') ? 'bg-gradient-dark text-white' : '' }}" href="{{ route("admin.orders") }}">
+        <a class="nav-link text-dark {{ request()->is('admin/orders') || request()->is('admin/orders/*') ? 'bg-gradient-success text-white' : '' }}" href="{{ route("admin.orders") }}">
           <div class="text-dark text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fas fa-shopping-cart  {{ request()->is('admin/orders') || request()->is('admin/orders/*') ? 'text-white' : '' }}" style="font-size: 17px"></i>
           </div>
@@ -37,15 +37,15 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-dark {{ request()->is('admin/categories') || request()->is('admin/categories/*') ? 'bg-gradient-dark text-white' : '' }}" href="{{ route("admin.categories.index") }}">
+        <a class="nav-link text-dark {{ request()->is('admin/categories') || request()->is('admin/categories/*') ? 'bg-gradient-success text-white' : '' }}" href="{{ route("admin.categories.index") }}">
           <div class="text-dark text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fas fa-tag {{ request()->is('admin/categories') || request()->is('admin/categories/*') ? 'text-white' : '' }}" style="font-size: 17px"></i>
           </div>
-          <span class="nav-link-text ms-1 text-uppercase">Categories</span>
+          <span class="nav-link-text ms-1 text-uppercase">Collections</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-dark {{ request()->is('admin/customer_list') || request()->is('admin/customer_list/*') ? 'bg-gradient-dark text-white' : '' }}" href="{{ route("admin.customer") }}">
+        <a class="nav-link text-dark {{ request()->is('admin/customer_list') || request()->is('admin/customer_list/*') ? 'bg-gradient-success text-white' : '' }}" href="{{ route("admin.customer") }}">
           <div class="text-dark text-center me-2 d-flex align-items-center justify-content-center">
             <i class="material-icons opacity-10 {{ request()->is('admin/customer_list') || request()->is('admin/customer_list/*') ? 'text-white' : '' }}">person</i>
           </div>
@@ -53,7 +53,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-dark {{ request()->is('admin/sales_reports') || request()->is('admin/sales_reports/*') ? 'bg-gradient-dark text-white' : '' }}" href="/admin/sales_reports/daily">
+        <a class="nav-link text-dark {{ request()->is('admin/sales_reports') || request()->is('admin/sales_reports/*') ? 'bg-gradient-success text-white' : '' }}" href="/admin/sales_reports/daily">
           <div class="text-dark text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fas fa-list {{ request()->is('admin/sales_reports') || request()->is('admin/sales_reports/*') ? 'text-white' : '' }}" style="font-size: 17px"></i>
           </div>

@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'site_title' => 'ANDJ BRIGHT PRINTING SERVICES',
+    'site_title' => 'HUNTER HERO',
 ];

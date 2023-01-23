@@ -5,9 +5,9 @@
 
 @section('content')
 <header class="py-2" style="
-background: #bdc3c7;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: #56ab2f;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #a8e063, #56ab2f);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #a8e063, #56ab2f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 ">
     <div class="container px-4 px-lg-5 my-5">
@@ -17,7 +17,9 @@ background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, F
     </div>
 </header>
 
-<section class="py-5" style="min-height: 70vh;">
+<section class="py-5" style="min-height: 80vh; background-image: url('/assets/img/bg.jfif'); background-position: center; 
+  background-repeat: no-repeat;
+  background-size: cover;">
 <div class="row m-2">
         <div class="col-md-8 mt-3 mx-auto">
             <div class="card card-plain h-100">
@@ -99,7 +101,7 @@ background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, F
                                         <input type="hidden" id="total_amount_field" value="{{$orders->sum->amount}}" step="any">
                                     </li>
 
-                                    <button class="btn-primary btn " id="checkout">CHECK OUT</button>
+                                    <button class="btn-success btn " id="checkout">CHECK OUT</button>
                         </ul>
                     </div>
                 </div>
@@ -136,7 +138,6 @@ background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, F
                                     <small class="fw-bolder " id="price">Price: ₱ 150</small> <br>
                                     <small class="fw-bolder " id="stock">Stock: 50</small>
                                     <br>
-                                    <small class="fw-bolder " id="expiration">Expiration: 50</small>
                                 
                             </div>
 
@@ -195,9 +196,6 @@ background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, F
                     }
                     if(key == 'stock'){
                         $('#stock').text(value)
-                    }
-                    if(key == 'expiration'){
-                        $('#expiration').text(value)
                     }
                     if(key == 'category'){
                         $('#category').text(value)

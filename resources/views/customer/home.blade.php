@@ -5,38 +5,39 @@
 
 @section('content')
 <header class="py-5" style="
-background: #bdc3c7;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: #56ab2f;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #a8e063, #56ab2f);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #a8e063, #56ab2f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 
 ">
-    <div class="container px-4 px-lg-5 my-5">
+    <div class="container px-4 px-lg-5 my-2">
         <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">{{ trans('panel.site_title') }}</h1>
-            <p class="lead fw-normal text-white-50 mb-0">All Products</p>
+            
+            <p class="lead fw-normal text-white mb-0">All Products</p>
+            <br>
+            <div class="row">
+                    <div class="col-10 mx-auto">
+                        <input type="text" id="search-bar" placeholder="Find a product?">
+                        <img class="search-icon" src="{{URL::asset('/assets/img/search-icon.png')}}">
+                        <br>
+                        <br>
+                        <h6 class="text-uppercase">Select a collection</h6>
+                       @foreach($categories as $category)
+                           <button class="btn btn-primary btn-sm filter_category text-uppercase" category_id="{{$category->id}}">{{$category->name ?? ''}}</button>
+                       @endforeach
+                       <br><br><br>
+                    </div>
+                </div>
         </div>
     </div>
 </header>
-
-<section class="py-5" style="margin-top: -120px; min-height: 60vh;" >
-    <div class="container" >
-        <div class="card">
+<section class="py-5" style="margin-top: -100px; min-height: 60vh;" >
+        <div class="card" style="background-image: url('/assets/img/bg.jfif'); background-position: center; 
+  background-repeat: no-repeat;
+  background-size: cover;">
             <div class="card-body">
-                <div class="row">
-                    <div class="col-6">
-                        <input type="text" id="search-bar" placeholder="Find a product?">
-                        <img class="search-icon" src="{{URL::asset('/assets/img/search-icon.png')}}">
-                    </div>
-                    <div class="col-6">
-                        <select name="filter_category" id="filter_category" style="height: 44px; width: 100%; ">
-                            <option value="">Filter Category</option>
-                            @foreach($categories as $category)
-                                <option value="{{$category->id}}">{{$category->name ?? ''}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
+                
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-5 justify-content-center" id="product_list">
                     @foreach($products as $product)
                         <div class="col mb-5">
@@ -67,8 +68,6 @@ background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, F
                 </div>
             </div>
         </div>
-    </div>
-    
 </section>
 
 <form method="post" id="myForm">
@@ -99,7 +98,6 @@ background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, F
                                     <br>
                                     <small class="fw-bolder" id="stock">Stock: 50</small>
                                     <br>
-                                    <small class="fw-bolder" id="expiration">Expiration: 50</small>
                             </div>
                             <div class="form-group mt-2">
                                 <h6>QTY <span class="text-danger">*</span></h6>
@@ -157,9 +155,7 @@ background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, F
                     if(key == 'stock'){
                         $('#stock').text(value)
                     }
-                    if(key == 'expiration'){
-                        $('#expiration').text(value)
-                    }
+                   
                     if(key == 'category'){
                         $('#category').text(value)
                     }
@@ -283,9 +279,9 @@ background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, F
     });
 
 
-    $('#filter_category').on("change", function(event){
+    $('.filter_category').on("click", function(event){
         var filter = 'category';
-        var value = this.value;
+        var value = $(this).attr('category_id');
 
         $.ajax({
         url: "/product/filter", 

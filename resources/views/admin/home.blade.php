@@ -14,7 +14,7 @@
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
             <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-dark shadow-primary text-center mt-n4 position-absolute">
+              <div class="icon icon-lg icon-shape bg-gradient-success shadow-primary text-center mt-n4 position-absolute">
                 <i class="fas fa-list" style="font-size: 17px"></i>
               </div>
               <div class="text-end pt-1">
@@ -31,7 +31,7 @@
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
             <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-dark shadow-success text-center mt-n4 position-absolute">
+              <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center mt-n4 position-absolute">
                 <i class="material-icons opacity-10 text-primary">person</i>
               </div>
               <div class="text-end pt-1">
@@ -48,8 +48,8 @@
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
             <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-dark shadow-info text-center mt-n4 position-absolute">
-                <i class="fas fa-shopping-cart text-success" style="font-size: 17px"></i>
+              <div class="icon icon-lg icon-shape bg-gradient-success shadow-info text-center mt-n4 position-absolute">
+                <i class="fas fa-shopping-cart text-dark" style="font-size: 17px"></i>
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">ORDERS FOR TODAY</p>
@@ -65,7 +65,7 @@
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
             <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-dark shadow-info text-center mt-n4 position-absolute">
+              <div class="icon icon-lg icon-shape bg-gradient-success shadow-info text-center mt-n4 position-absolute">
                 <i class="fas fa-shopping-cart text-info" style="font-size: 17px"></i>
               </div>
               <div class="text-end pt-1">

@@ -11,7 +11,7 @@ class HomeController extends Controller
     public function index()
     {
         $categories = Category::latest()->get();
-        $products = Product::orderBy('expiration', 'asc')->get();
+        $products = Product::orderBy('category_id', 'asc')->get();
         return view('customer.home' , compact('products','categories'));
     }
 
@@ -30,9 +30,9 @@ class HomeController extends Controller
 
         if($filter == 'category'){
             if($value == ''){
-                $data = Product::orderBy('expiration', 'asc')->get();
+                $data = Product::orderBy('category_id', 'asc')->get();
             }else{
-                $data = Product::where('category_id', $value)->orderBy('expiration', 'asc')->get();
+                $data = Product::where('category_id', $value)->orderBy('category_id', 'asc')->get();
             }
         }
         

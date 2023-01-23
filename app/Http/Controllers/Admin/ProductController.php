@@ -39,7 +39,6 @@ class ProductController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'category' => ['required'],
             'image' =>  ['required' , 'mimes:png,jpg,jpeg,svg,bmp,ico', 'max:2040'],
-            'expiration' => ['required','date', 'after:today'],
             'stock' => ['required','integer','min:1'],
             'price' => ['required','integer','min:1'],
         ]);
@@ -57,7 +56,6 @@ class ProductController extends Controller
             'category_id' => $request->input('category'),
             'description' => $request->input('description'),
             'image' => $file_name_to_save,
-            'expiration' => $request->input('expiration'),
             'stock' => $request->input('stock'),
             'price' => $request->input('price'),
         ]);

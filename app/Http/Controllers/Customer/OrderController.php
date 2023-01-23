@@ -23,8 +23,6 @@ class OrderController extends Controller
             'image'        => $product->image,
             'stock'        => 'Stock: '. $product->stock,
             'price'        => 'Price: ₱ '. $product->price,
-            'description'  => $product->description ?? '',
-            'expiration'  => 'Expiration: ₱ '.$product->expiration->format('M j , Y'),
             'exp'        => $promo ?? '',
         ];
 
@@ -60,7 +58,6 @@ class OrderController extends Controller
             [
                 'user_id'    => auth()->user()->id,
                 'product_id' => $product->id,
-                'expiration'    => $product->expiration,
                 'qty'        => $request->input('qty'),
                 'amount'     => $amount,
                 'price'      => $product->price,
@@ -90,7 +87,6 @@ class OrderController extends Controller
             'stock'        => 'Stock: '. $order->product->stock,
             'price'        => 'Price: ₱ '. $order->price,
             'description'  =>  $order->product->description ?? '',
-            'expiration'  => 'Expiration: ₱ '.$order->product->expiration->format('M j , Y'),
         ];
 
         return response()->json([

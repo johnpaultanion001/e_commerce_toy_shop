@@ -13,7 +13,7 @@
         @elseif(request()->is('admin/customer_list'))
           <li class="breadcrumb-item text-sm text-white active" aria-current="page">Customers</li>
         @elseif(request()->is('admin/categories'))
-        <li class="breadcrumb-item text-sm text-white active" aria-current="page">Categories</li>
+        <li class="breadcrumb-item text-sm text-white active" aria-current="page">Collections</li>
         @elseif(request()->is('admin/sales_reports/*'))
         <li class="breadcrumb-item text-sm text-white active" aria-current="page">Sales Reports</li>
         @endif
@@ -28,7 +28,7 @@
       @elseif(request()->is('admin/customer_list'))
         <h6 class="font-weight-bolder mb-0 text-white">Customers</h6>
       @elseif(request()->is('admin/categories'))
-        <h6 class="font-weight-bolder mb-0 text-white">Categories</h6>
+        <h6 class="font-weight-bolder mb-0 text-white">Collections</h6>
       @elseif(request()->is('admin/sales_reports/*'))
         <h6 class="font-weight-bolder mb-0 text-white">Sales Reports</h6>
       @endif

@@ -6,9 +6,9 @@
 
 @section('content')
 <header class="py-5" style="
-background: #bdc3c7;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: #56ab2f;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #a8e063, #56ab2f);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #a8e063, #56ab2f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 ">
     <div class="container px-4 px-lg-5 my-5">
@@ -18,12 +18,12 @@ background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, F
     </div>
 </header>
 
-<section class="py-5" style="margin-top: -100px; height: 60vh;">
+<section class="py-5" style="margin-top: -100px; height: 80vh; background-image: url('/assets/img/bg.jfif'); background-position: center; 
+  background-repeat: no-repeat;
+  background-size: cover;">
         <div class="justify-content-center col-lg-7 mx-auto">
            <div class="card z-index-0 fadeIn3 fadeInBottom">
-              <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 text-center">
-                <h1>REGISTER ACCOUNT</h1>
-              </div>
+              
               <div class="card-body">
                 <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                   @csrf
@@ -67,7 +67,7 @@ background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, F
                           </div>
                           <div class="col-lg-6">
                             <div class="form-group">
-                              <label class="form-label">Address <span class="text-danger">*</span></label>
+                              <label class="form-label">Complete Address <span class="text-danger">*</span></label>
                               <input type="text" id="address" name="address" class="form-control @error('address') is-invalid @enderror" value="{{ old('address') }}"   required autocomplete="address">
                               @error('address')
                                 <span class="invalid-feedback" role="alert">
@@ -97,7 +97,7 @@ background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, F
                       </div>
 
                       <div class="text-center">
-                        <button type="submit" class="btn btn-primary w-100 my-4 mb-2">REGISTER</button>
+                        <button type="submit" class="btn btn-success w-100 my-4 mb-2">REGISTER</button>
                       </div>
                       
                       <p class="mt-4 text-sm text-center">

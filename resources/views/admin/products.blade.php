@@ -44,7 +44,6 @@
                                     
                                     <th scope="col">NAME</th>
                                     <th scope="col">DESCRIPTION</th>
-                                    <th scope="col">EXPIRATION</th>
                                     <th scope="col">STOCK</th>
                                     <th scope="col">PRICE</th>
                                     <th scope="col">CREATED AT</th>
@@ -74,9 +73,7 @@
                                         <td>
                                             {{\Illuminate\Support\Str::limit($product->description,50)}}
                                         </td>
-                                        <td>
-                                            {{ $product->expiration->format('M j , Y') }}
-                                        </td>
+                                       
                                         <td>
                                             {{ $product->stock ?? '' }}
                                         </td>
@@ -129,15 +126,6 @@
                                         <option value="{{$category->id}}">{{$category->name}}</option>
                                     @endforeach
                                 </select>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label class="form-label">Expiration: </label>
-                                <input type="date" name="expiration" id="expiration" class="form-control disabled" >
-                                <span class="invalid-feedback" role="alert">
-                                    <strong id="error-expiration"></strong>
-                                </span>
                             </div>
                         </div>
                         <div class="col-sm-6">
