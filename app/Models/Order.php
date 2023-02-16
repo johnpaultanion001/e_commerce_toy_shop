@@ -13,8 +13,13 @@ class Order extends Model
         'user_id',
         'status',
         'shipping_option',
+        'payment_option',
         'shipping_fee',
         'total_amount',
+        'isPaid',
+        'payment_receipt',
+        'cancel_reason',
+
     ];
 
     public function orderproducts()

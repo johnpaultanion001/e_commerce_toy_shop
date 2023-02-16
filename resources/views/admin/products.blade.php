@@ -23,7 +23,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <select name="category_dd" id="category_dd" class="select2" style="width: 100%;">
-                                        <option value="">FILTER CATEGORY</option>
+                                        <option value="">FILTER COLLECTION</option>
                                         @foreach($categories as $category)
                                             <option value="{{$category->name}}">{{$category->name}}</option>
                                         @endforeach
@@ -39,13 +39,15 @@
                                 <tr>
                                     <th scope="col">ACTIONS</th>
                                     <th scope="col">ID</th>
+                                    <th scope="col">Status</th>
                                     <th scope="col">IMAGE</th>
                                     <th  scope="col">CATEGORY</th>
                                     
                                     <th scope="col">NAME</th>
                                     <th scope="col">DESCRIPTION</th>
                                     <th scope="col">STOCK</th>
-                                    <th scope="col">PRICE</th>
+                                    <th scope="col">UNIT PRICE</th>
+                                    <th scope="col">PROFIT</th>
                                     <th scope="col">CREATED AT</th>
                                 </tr>
                             </thead>
@@ -59,6 +61,9 @@
                                         </td>
                                         <td>
                                             {{  $product->id ?? '' }}
+                                        </td>
+                                        <td>
+                                            <span class="badge {{  $product->status == 'ONHAND' ? 'bg-success':'bg-warning' }}">{{  $product->status ?? '' }}</span>
                                         </td>
                                         <td>
                                             <img style="vertical-align: bottom;"  height="100" width="100" src="{{URL::asset('/assets/img/products/'.$product->image)}}" />
@@ -78,7 +83,10 @@
                                             {{ $product->stock ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $product->price ?? '' }}
+                                            {{ $product->unit_price ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $product->retailed_price ?? '' }}
                                         </td>
                                         <td>
                                             {{ $product->created_at->format('M j , Y h:i A') }}
@@ -120,7 +128,7 @@
                        
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label class="form-label">Category: <span class="text-danger">*</span></label>
+                                <label class="form-label">Collection: <span class="text-danger">*</span></label>
                                 <select name="category" id="category" class="select2 form-control" style="width: 100%; ">
                                     @foreach($categories as $category)
                                         <option value="{{$category->id}}">{{$category->name}}</option>
@@ -155,6 +163,16 @@
                                 <span class="invalid-feedback" role="alert">
                                     <strong id="error-description"></strong>
                                 </span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-label">Status: <span class="text-danger">*</span></label>
+                                <select name="status" id="status" class="select2 form-control" style="width: 100%; ">
+                                    
+                                        <option value="ONHAND">ONHAND</option>
+                                        <option value="PRE-ORDER">PRE ORDER</option>
+                                </select>
                             </div>
                         </div>
                         
@@ -346,6 +364,11 @@ $(document).on('click', '.edit', function(){
                 }
                 if(key == 'category_id'){
                     $("#category").select2("trigger", "select", {
+                        data: { id: value }
+                    });
+                }
+                if(key == 'status'){
+                    $("#status").select2("trigger", "select", {
                         data: { id: value }
                     });
                 }

@@ -21,9 +21,11 @@ class OrderController extends Controller
             'name'         => $product->name,
             'category'     => $product->category->name,
             'image'        => $product->image,
+            'description'        => $product->description,
             'stock'        => 'Stock: '. $product->stock,
-            'price'        => 'Price: ₱ '. $product->price,
-            'exp'        => $promo ?? '',
+            'price'        => 'Price: ₱ '. $product->unit_price,
+            'status'          => $product->status,
+            'status_color' => $product->status == 'ONHAND' ? 'bg-success':'bg-warning',
         ];
 
         return response()->json([
@@ -47,7 +49,7 @@ class OrderController extends Controller
             return response()->json(['errorstock' => 'Must be less than the stock.']);
         }
                         
-        $amount = $product->price * $request->input('qty');
+        $amount = $product->unit_price * $request->input('qty');
 
         OrderProduct::updateOrcreate(
             [
@@ -58,9 +60,10 @@ class OrderController extends Controller
             [
                 'user_id'    => auth()->user()->id,
                 'product_id' => $product->id,
+                'product_name' => $product->name,
                 'qty'        => $request->input('qty'),
                 'amount'     => $amount,
-                'price'      => $product->price,
+                'price'      => $product->unit_price,
             ]
         );
 
@@ -140,7 +143,7 @@ class OrderController extends Controller
         if($ordercount < 1){
             return response()->json(['nodata' => 'No data available']);
         }       
-        if($request->get('shipping') == 'pickUp'){
+        if($request->input('shipping_option') == 'pickUp'){
             $fee = 0;
             $total_amount = $orderproducts->sum->amount;
             $total = $fee + $total_amount;
@@ -150,12 +153,20 @@ class OrderController extends Controller
             $total = $fee + $total_amount;
         }
         
+        if ($request->file('upload_receipt')) {
+            $resibo = $request->file('upload_receipt');
+            $extension = $resibo->getClientOriginalExtension(); 
+            $file_name_to_save = time()."_".".".$extension;
+            $resibo->move('assets/img/resibo/', $file_name_to_save);
+        }
 
         $orders = Order::create([
             'user_id'   => auth()->user()->id,
-            'shipping_option' => $request->get('shipping'),
+            'shipping_option' => $request->input('shipping_option'),
+            'payment_option' => $request->input('payment_option'),
             'shipping_fee'  => $fee,
             'total_amount' => $total,
+            'payment_receipt' => $file_name_to_save ?? '',
         ]);
         foreach($orderproducts as $order){
                 if($order->qty > $order->product->stock){
@@ -186,11 +197,14 @@ class OrderController extends Controller
 
         return view('customer.orders_history' ,compact('orders' , 'orders_approved'));
     }
-    public function cancel_order(Order $order){
+    public function cancel_order(Order $order, Request $request){
         Order::find($order->id)
             ->update([
-                'status'    => 'CANCELLED'
+                'status'    => 'CANCELLED',
+                'cancel_reason' => $request->input('reason'),
             ]);
+
+      
 
         foreach($order->orderproducts()->get() as $order_p){
             Product::where('id', $order_p->product->id)

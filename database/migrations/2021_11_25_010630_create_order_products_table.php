@@ -17,6 +17,7 @@ class CreateOrderProductsTable extends Migration
             $table->id();
             $table->string('user_id');
             $table->string('product_id');
+            $table->string('product_name');
             $table->string('order_id')->nullable();
             $table->integer('qty');
             $table->float('amount');

@@ -36,6 +36,8 @@ background: linear-gradient(to right, #a8e063, #56ab2f); /* W3C, IE 10+/ Edge, F
                                             <p class="mb-0 text-xs text-dark font-weight-bold">QTY: {{$order->qty ?? ''}}</p>
                                             <p class="mb-0 text-xs text-dark font-weight-bold">PRICE: {{$order->price ?? ''}}</p>
                                             <p class="mb-0 text-xs text-dark font-weight-bold">{{ $order->created_at->format('M j, h:i A') }}</p>
+                                            <div class="badge  {{$order->product->status == 'ONHAND' ? 'bg-success':'bg-warning'}} text-white position-absolute text-uppercase">{{$order->product->status ?? ''}}</div>
+
                                         
                                         </div>
                                         <div class="ms-auto">
@@ -60,6 +62,8 @@ background: linear-gradient(to right, #a8e063, #56ab2f); /* W3C, IE 10+/ Edge, F
         </div>
         <div class="col-md-4  mt-3 mx-auto">
                 <div class="card card-plain h-100">
+                <form method="post" id="myCheckout">
+                    @csrf
                     <div class="card-body p-3">
                         <ul class="list-group">
                                     <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2 pt-0">
@@ -85,6 +89,32 @@ background: linear-gradient(to right, #a8e063, #56ab2f); /* W3C, IE 10+/ Edge, F
                                     </li>
                                     <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2 pt-0">
                                         <div class="d-flex align-items-start flex-column justify-content-center">
+                                            <h6 class="mb-0">PAYMENT MODE</h6>
+                                        </div>
+                                        <div class="ms-auto text-primary">
+                                            <div class="form-group">
+                                                <select name="payment_option" id="payment_option" class="form-control">
+                                                    <option value="COD">CASH ON DELIVERY</option>
+                                                    <option value="GCASH">GCASH</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </li>
+                                   
+                                    <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2 pt-0 " >
+                                   
+                                            <div class="d-flex align-items-start flex-column justify-content-center paymentSection">
+                                                <h6 class="mb-0 paymentSection">UPLOAD RECEIPT <br> <p class="text-info" id="how_to_pay" style="cursor: pointer">How to pay?</p></h6>
+                                            </div>
+                                            <div class="ms-auto text-primary paymentSection">
+                                                <div class="form-group">
+                                                <input type="file" id="upload_receipt"  name="upload_receipt"  class="form-control">
+                                                </div>
+                                            </div>
+                                        
+                                    </li>
+                                    <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2 pt-0">
+                                        <div class="d-flex align-items-start flex-column justify-content-center">
                                             <h6 class="mb-0">SHIPPING FEE</h6>
                                         </div>
                                         <div class="ms-auto text-primary" id="shipping_fee">
@@ -101,9 +131,10 @@ background: linear-gradient(to right, #a8e063, #56ab2f); /* W3C, IE 10+/ Edge, F
                                         <input type="hidden" id="total_amount_field" value="{{$orders->sum->amount}}" step="any">
                                     </li>
 
-                                    <button class="btn-success btn " id="checkout">CHECK OUT</button>
+                                    <button type="submit" class="btn-success btn " id="checkout">CHECK OUT</button>
                         </ul>
                     </div>
+                </form>
                 </div>
         </div>
     </div>
@@ -161,12 +192,34 @@ background: linear-gradient(to right, #a8e063, #56ab2f); /* W3C, IE 10+/ Edge, F
         </div>
     </div>
 </form>
+
+<div class="modal fade" id="howToPay" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-uppercase font-weight-bold"></h5>
+            <button type="button" class="btn text-danger p-0 close_modal">
+              <i class="ri-close-line"></i>
+            </button>
+          </div>
+            <div class="modal-body" id="modal_content">
+                   
+            </div>
+      
+        </div>
+      </div>
+</div>
 @endsection
 
 @section('script')
 <script>
    
     var order_id = null;
+   
+    $(function () {
+        $('.paymentSection').hide();
+    })
+
     $(document).on('click', '.edit_order', function(){
         $('#formModal').modal('show');
         $('#myForm')[0].reset();
@@ -321,94 +374,89 @@ background: linear-gradient(to right, #a8e063, #56ab2f); /* W3C, IE 10+/ Edge, F
 
     });
 
-    $(document).on('click', '#checkout' , function(){
-        $.confirm({
-            title: 'Confirmation',
-            content: 'Are you sure , you want to check out?',
-            type: 'dark',
-            buttons: {
-                confirm: {
-                    text: 'confirm',
-                    btnClass: 'btn-blue',
-                    action: function(){
-                        return $.ajax({
-                            url :"/customer/orders/checkout",
-                            dataType:"json",
-                            method:"get",
-                            data: {
-                                        _token: '{!! csrf_token() !!}', shipping:$('#shipping_option').val()
+
+    $('#myCheckout').on('submit', function(event){
+        event.preventDefault();
+        $('.form-control').removeClass('is-invalid')
+        var action_url = "{{ route('customer.order.checkout') }}";
+        var type = "POST";
+
+        $.ajax({
+        url: action_url,
+        method:type,
+        data:  new FormData(this),
+        contentType: false,
+        cache: false,
+        processData: false,
+
+        dataType:"json",
+        beforeSend:function(){
+            $("#checkout").attr("disabled", true);
+            $("#checkout").attr("value", "Loading..");
+        },
+        success:function(data){
+            
+                $("#checkout").attr("disabled", false);
+                $("#checkout").attr("value", "CHECK OUT");
+
+                if(data.no_stock){
+                    $.confirm({
+                        title: 'Confirmation',
+                        content: data.no_stock,
+                        type: 'red',
+                        buttons: {
+                                confirm: {
+                                    text: 'Confirm',
+                                    btnClass: 'btn-blue',
+                                    keys: ['enter', 'shift'],
+                                    action: function(){
+                                        location.reload();
+                                    }
                                 },
-                            beforeSend:function(){
-                                $("#checkout").attr("disabled",true);
-                                $("#checkout").text("Loading..");  
-                            },
-                            success:function(data){
-                                $("#checkout").attr("disabled",false);
-                                $("#checkout").text("CHECKOUT");
-                                if(data.no_stock){
-                                    $.confirm({
-                                        title: 'Confirmation',
-                                        content: data.no_stock,
-                                        type: 'red',
-                                        buttons: {
-                                                confirm: {
-                                                    text: 'Confirm',
-                                                    btnClass: 'btn-blue',
-                                                    keys: ['enter', 'shift'],
-                                                    action: function(){
-                                                        location.reload();
-                                                    }
-                                                },
-                                        }
-                                    });
-                                }  
-                                if(data.nodata){
-                                    $.confirm({
-                                        title: 'Confirmation',
-                                        content: data.nodata,
-                                        type: 'red',
-                                        buttons: {
-                                                confirm: {
-                                                    text: 'Confirm',
-                                                    btnClass: 'btn-blue',
-                                                    keys: ['enter', 'shift'],
-                                                    action: function(){
-                                                        location.reload();
-                                                    }
-                                                },
-                                        }
-                                    });
-                                }
-                                if(data.success){
-                                    $.confirm({
-                                        title: 'Confirmation',
-                                        content: data.success,
-                                        type: 'green',
-                                        buttons: {
-                                                confirm: {
-                                                    text: 'Confirm',
-                                                    btnClass: 'btn-blue',
-                                                    keys: ['enter', 'shift'],
-                                                    action: function(){
-                                                        window.location.href = "/customer/orders_history";
-                                                    }
-                                                },
-                                        }
-                                    });
-                                }
-                            }
-                        })
-                    }
-                },
-                cancel:  {
-                    text: 'cancel',
-                    btnClass: 'btn-red',
+                        }
+                    });
+                }  
+                if(data.nodata){
+                    $.confirm({
+                        title: 'Confirmation',
+                        content: data.nodata,
+                        type: 'red',
+                        buttons: {
+                                confirm: {
+                                    text: 'Confirm',
+                                    btnClass: 'btn-blue',
+                                    keys: ['enter', 'shift'],
+                                    action: function(){
+                                        location.reload();
+                                    }
+                                },
+                        }
+                    });
                 }
-            }
-        });
-        
+                if(data.success){
+                    $.confirm({
+                        title: 'Confirmation',
+                        content: data.success,
+                        type: 'green',
+                        buttons: {
+                                confirm: {
+                                    text: 'Confirm',
+                                    btnClass: 'btn-blue',
+                                    keys: ['enter', 'shift'],
+                                    action: function(){
+                                        window.location.href = "/customer/orders_history";
+                                    }
+                                },
+                        }
+                    });
+                }
+            
+        }
     });
 
+
+      
+    });
     $(document).on('change', '#shipping_option' , function(){
         var total , shipping_fee , total_amount;
 
@@ -426,6 +474,32 @@ background: linear-gradient(to right, #a8e063, #56ab2f); /* W3C, IE 10+/ Edge, F
 
             $('#shipping_fee').text('₱ 100.00');
             $('#total_amount').text('₱ '+total+'.00');
+        }
+        
+    });
+
+    $(document).on('click', '#how_to_pay', function(){
+            $('.modal-title').text('How to pay ?');
+            var content = "";
+                content += '<p>GCash</p>';
+                content += '<ul>';
+                    content += '<li>On your GCash app dashboard, click on Pay Bills>Government>System and input the amount you need to pay as well as the other information required. (Double check the amount and information you have input to avoid any errors or issues from happening.)</li>';
+                    content += '<li>Once you have already paid, download a receipt or take a screenshot for proof of payment.</li>';
+                    content += '<li>Attach it to the proof of payment section on the system portal that will appear once you click on the checkout button.</li>';
+                content += '</ul>';
+                content += '<br>';
+                content += '<p class="text-center text-danger">Please wait for 24-48 hours for the confirmation of your payment and you will be notified on your account dashboard once your document is ready for claiming.</p>';
+            $('#modal_content').empty().append(content);
+            $('#howToPay').modal('show');
+        });
+
+    $(document).on('change', '#payment_option' , function(){
+        
+
+        if($(this).val() == 'COD'){
+            $('.paymentSection').hide();
+        }else{
+            $('.paymentSection').show();
         }
         
     });

@@ -92,8 +92,9 @@ background: linear-gradient(to right, #a8e063, #56ab2f); /* W3C, IE 10+/ Edge, F
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
+                        
                     <label class="control-label text-uppercase" >Current Password<span class="text-danger">*</span></label>
-                    <input type="password" name="current_password" id="current_password" class="form-control"/>
+                    <input type="text" name="current_password" id="current_password" class="form-control" value="password"/>
                     <span class="invalid-feedback" role="alert">
                         <strong id="error-current_password"></strong>
                     </span>

@@ -17,6 +17,7 @@ class OrderProduct extends Model
         'price',
         'status',
         'amount',
+        'product_name',
     ];
 
     public function product()

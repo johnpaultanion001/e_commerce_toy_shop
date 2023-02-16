@@ -35,6 +35,25 @@ class HomeController extends Controller
                 $data = Product::where('category_id', $value)->orderBy('category_id', 'asc')->get();
             }
         }
+
+        if($filter == 'onhand'){
+        
+            $data = Product::where('status', "ONHAND")->latest()->get();
+            
+        }
+
+        if($filter == 'preorder'){
+        
+            $data = Product::where('status', "PRE-ORDER")->latest()->get();
+            
+        }
+        if($filter == 'new_arrivals'){
+        
+            $data = Product::latest()->get();
+            
+        }
+
+        
         
         foreach($data as $item){
             $products[] = array(
@@ -42,7 +61,11 @@ class HomeController extends Controller
                 'name'         => $item->name,
                 'category'     => $item->category->name,
                 'image'        => $item->image,
-            );
+                'description'  => $item->description,
+                'price'        => $item->unit_price,
+                'status'       => $item->status,
+                'status_color' => $item->status == 'ONHAND' ? 'bg-success':'bg-warning',
+           );
         }
         return response()->json([
             'products'  => $products,

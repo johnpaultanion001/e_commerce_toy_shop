@@ -27,8 +27,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // receipt
     Route::get('orders/receipt/{order}', 'OrderController@receipt')->name('orders.receipt');
 
+    // receipt
+    Route::get('orders/receipt/{order}', 'OrderController@receipt')->name('orders.receipt');
+
     // Sales Reports
-    Route::get('sales_reports/{filter}', 'OrderController@sales_reports')->name('sales_reports');
+    Route::get('sales_reports/{filter}/{from}/{to}', 'OrderController@sales_reports')->name('sales_reports');
     
 
      // CustomerList
@@ -59,7 +62,7 @@ Route::group(['prefix' => 'customer', 'as' => 'customer.', 'namespace' => 'Custo
     Route::get('orders/{order}/edit', 'OrderController@edit')->name('order.edit');
     Route::put('orders/{order}', 'OrderController@update')->name('order.update');
     Route::delete('orders/{order}', 'OrderController@cancel')->name('order.cancel');
-    Route::get('orders/checkout', 'OrderController@checkout')->name('order.checkout');
+    Route::post('orders/checkout', 'OrderController@checkout')->name('order.checkout');
 
     // ORDER HISTORY
     Route::get('orders_history', 'OrderController@orders_history')->name('orders.history');

@@ -8,6 +8,9 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Rules\MatchOldPassword;
 use Validator;
+use Illuminate\Support\Facades\Crypt;
+
+
 
 class HomeController extends Controller
 {

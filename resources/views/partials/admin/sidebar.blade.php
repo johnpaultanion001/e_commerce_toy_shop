@@ -53,7 +53,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-dark {{ request()->is('admin/sales_reports') || request()->is('admin/sales_reports/*') ? 'bg-gradient-success text-white' : '' }}" href="/admin/sales_reports/daily">
+        <a class="nav-link text-dark {{ request()->is('admin/sales_reports') || request()->is('admin/sales_reports/*') ? 'bg-gradient-success text-white' : '' }}" href="/admin/sales_reports/daily/daily/daily">
           <div class="text-dark text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fas fa-list {{ request()->is('admin/sales_reports') || request()->is('admin/sales_reports/*') ? 'text-white' : '' }}" style="font-size: 17px"></i>
           </div>

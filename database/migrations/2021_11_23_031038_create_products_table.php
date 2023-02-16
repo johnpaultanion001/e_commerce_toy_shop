@@ -19,8 +19,10 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('category_id');
             $table->longText('description')->nullable();
-            $table->string('price')->nullable();
+            $table->string('unit_price')->nullable();
+            $table->string('retailed_price')->nullable();
             $table->string('stock')->nullable();
+            $table->string('status')->default("ONHAND");
             $table->timestamps();
         });
     }

@@ -41,6 +41,7 @@ class ProductController extends Controller
             'image' =>  ['required' , 'mimes:png,jpg,jpeg,svg,bmp,ico', 'max:2040'],
             'stock' => ['required','integer','min:1'],
             'price' => ['required','integer','min:1'],
+            'status' => ['required'],
         ]);
 
         if ($validated->fails()) {
@@ -58,6 +59,7 @@ class ProductController extends Controller
             'image' => $file_name_to_save,
             'stock' => $request->input('stock'),
             'price' => $request->input('price'),
+            'status' => $request->input('status'),
         ]);
 
 
@@ -101,6 +103,7 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->category_id = $request->category;
         $product->description = $request->description;
+        $product->status = $request->status;
   
         $product->save();
 
