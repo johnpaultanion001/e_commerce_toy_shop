@@ -40,7 +40,8 @@ class ProductController extends Controller
             'category' => ['required'],
             'image' =>  ['required' , 'mimes:png,jpg,jpeg,svg,bmp,ico', 'max:2040'],
             'stock' => ['required','integer','min:1'],
-            'price' => ['required','integer','min:1'],
+            'unit_price' => ['required','integer','min:1'],
+            'retailed_price'    => ['required','integer','min:1'],
             'status' => ['required'],
         ]);
 
@@ -58,7 +59,8 @@ class ProductController extends Controller
             'description' => $request->input('description'),
             'image' => $file_name_to_save,
             'stock' => $request->input('stock'),
-            'price' => $request->input('price'),
+            'unit_price' => $request->input('unit_price'),
+            'retailed_price' => $request->input('retailed_price'),
             'status' => $request->input('status'),
         ]);
 
@@ -104,6 +106,8 @@ class ProductController extends Controller
         $product->category_id = $request->category;
         $product->description = $request->description;
         $product->status = $request->status;
+        $product->unit_price = $request->unit_price;
+        $product->retailed_price = $request->retailed_price;
   
         $product->save();
 

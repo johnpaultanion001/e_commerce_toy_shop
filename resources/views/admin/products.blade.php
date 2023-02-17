@@ -147,24 +147,24 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label class="form-label">Price: </label>
-                                <input type="number" name="price" id="price" class="form-control disabled" >
+                                <label class="form-label">Unit Price: </label>
+                                <input type="number" name="unit_price" id="unit_price" class="form-control disabled" >
                                 <span class="invalid-feedback" role="alert">
-                                    <strong id="error-price"></strong>
+                                    <strong id="error-unit_price"></strong>
                                 </span>
                             </div>
                         </div>
-                      
-
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label class="form-label">Description: </label>
-                                <input type="text" name="description" id="description" class="form-control disabled" >
+                                <label class="form-label">Profit: </label>
+                                <input type="number" name="retailed_price" id="retailed_price" class="form-control disabled" >
                                 <span class="invalid-feedback" role="alert">
-                                    <strong id="error-description"></strong>
+                                    <strong id="error-retailed_price"></strong>
                                 </span>
                             </div>
                         </div>
+
+                        
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label class="form-label">Status: <span class="text-danger">*</span></label>
@@ -173,6 +173,15 @@
                                         <option value="ONHAND">ONHAND</option>
                                         <option value="PRE-ORDER">PRE ORDER</option>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label class="form-label">Description: </label>
+                                <input type="text" name="description" id="description" class="form-control disabled" >
+                                <span class="invalid-feedback" role="alert">
+                                    <strong id="error-description"></strong>
+                                </span>
                             </div>
                         </div>
                         
