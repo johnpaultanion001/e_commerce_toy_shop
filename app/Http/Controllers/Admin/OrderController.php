@@ -61,13 +61,14 @@ class OrderController extends Controller
                 Order::find($order->id)->update([
                     'status'    => 'APPROVED',
                 ]);
+                $order->orderproducts()->update([
+                    'status'    => 'APPROVED',
+                ]);
                 Mail::to($order->user->email)
                     ->send(new EmailNotification($emailNotif));
 
 
-                $order->orderproducts()->update([
-                    'status'    => 'APPROVED',
-                ]);
+                
             }
     
             if($order->status == "APPROVED"){
