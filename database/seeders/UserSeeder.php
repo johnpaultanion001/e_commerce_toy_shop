@@ -20,6 +20,8 @@ class UserSeeder extends Seeder
                 'name'           => 'Admin',
                 'email'          => 'admin@admin.com',
                 'password'       => '$2y$10$zPiaTbYwkxYcejFmEimhWedeAogTJvEb/yGmBVx390ihhPFy8r896' ,//password
+                'recent_password'       => '$2y$10$zPiaTbYwkxYcejFmEimhWedeAogTJvEb/yGmBVx390ihhPFy8r896' ,//password
+                
                 'contact_number'  => null,
                 'address'  => null,
                 'remember_token' => null,
@@ -32,6 +34,8 @@ class UserSeeder extends Seeder
                 'name'           => 'Sample Customer',
                 'email'          => 'user@user.com',
                 'password'       => '$2y$10$zPiaTbYwkxYcejFmEimhWedeAogTJvEb/yGmBVx390ihhPFy8r896',//password
+                'recent_password'       => '$2y$10$zPiaTbYwkxYcejFmEimhWedeAogTJvEb/yGmBVx390ihhPFy8r896' ,//password
+                
                 'contact_number'  => '09776668820',
                 'address'  => 'ANTIPOLO CITY',
                 'remember_token' => null,

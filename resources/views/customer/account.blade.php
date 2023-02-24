@@ -94,7 +94,7 @@ background: linear-gradient(to right, #a8e063, #56ab2f); /* W3C, IE 10+/ Edge, F
                     <div class="form-group">
                         
                     <label class="control-label text-uppercase" >Current Password<span class="text-danger">*</span></label>
-                    <input type="text" name="current_password" id="current_password" class="form-control" value="password"/>
+                    <input type="text" name="current_password" id="current_password" class="form-control"/>
                     <span class="invalid-feedback" role="alert">
                         <strong id="error-current_password"></strong>
                     </span>
@@ -161,6 +161,10 @@ $('#cpForm').on('submit', function(event){
                       $('#error-'+key).text(value)
                   }
                 })
+            }
+            if(data.recent_password){
+                $('#new_password').addClass('is-invalid')
+                $('#error-new_password').text(data.recent_password)
             }
             if(data.success){
                 $('.form-control').removeClass('is-invalid');

@@ -30,7 +30,12 @@ class HomeController extends Controller
             return response()->json(['errors' => $validated->errors()]);
         }
 
+        if(Hash::check($request->input('new_password'), auth()->user()->recent_password)){
+            return response()->json(['recent_password' => 'You used this password recently, Please choose a different one.']);
+        }
+
         User::find($user->id)->update([
+            'recent_password' => Hash::make($request->input('current_password')),
             'password' => Hash::make($request->input('new_password')),
           
         ]);
